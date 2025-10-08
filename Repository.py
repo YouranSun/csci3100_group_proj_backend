@@ -15,40 +15,6 @@ class Repository:
         except Exception as e:
             raise RuntimeError(f"无法在 {self.repo_path} 打开 Git 仓库: {e}")
 
-    def generate_diff(self, mode="cached"):
-        """
-        生成与指定对象的差异。
-        
-        :param mode: 差异模式，可选：
-            - "cached"：暂存区 vs HEAD（等价于 git diff --cached）
-            - "working"：工作区 vs 暂存区（等价于 git diff）
-            - "head"：工作区 vs HEAD（等价于 git diff HEAD）
-        :return: diff 文本字符串
-        """
-        valid_modes = {"cached", "working", "head"}
-        if mode not in valid_modes:
-            raise ValueError(f"mode 必须是 {valid_modes} 之一")
-
-        if mode == "cached":
-            diff_text = self.repo.git.diff("--cached")
-        elif mode == "working":
-            diff_text = self.repo.git.diff()
-        elif mode == "head":
-            diff_text = self.repo.git.diff("HEAD")
-
-        return diff_text
-
-    def staged_changes(self):
-        """
-        返回暂存区中文件与 HEAD 的结构化变更摘要。
-        类似于 `git diff --cached --name-status`
-        """
-        diffs = self.repo.index.diff("HEAD")
-        return [
-            {"path": diff.a_path, "change_type": diff.change_type}
-            for diff in diffs
-        ]
-
     def parse_diff_blocks(self, diff_text):
         """
         解析 git diff 文本，提取文件名、行号区间、原始内容、新内容。

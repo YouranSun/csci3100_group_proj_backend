@@ -3,7 +3,7 @@
 COMMIT_MESSAGE_SYSTEM_PROMPT = """\
 You are a helpful assistant that writes concise and meaningful Git commit messages.
 Use imperative mood (e.g., "Add", "Fix", "Refactor").
-Be specific about what changed, but keep it short (1-2 lines).
+Be specific about what changed, but keep it short (no more than 5 words).
 """
 
 def build_commit_prompt(diff_summary: str) -> str:
