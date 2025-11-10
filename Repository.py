@@ -71,3 +71,10 @@ class Repository:
         """
         diff_text = self.repo.git.diff("--cached", "--unified=0")
         return self.parse_diff_blocks(diff_text)
+    
+    def to_dict(self):
+        return {
+            "path": str(self.repo_path),
+            "name": getattr(self, "name", None) or self.repo_path.name,
+            "last_commit": self.repo.head.commit.hexsha if self.repo.head else None
+        }

@@ -15,6 +15,7 @@ def summarize_diff(diff_dicts):
         lines.append("")
     return "\n".join(lines)
 
+
 def generate_commit_message(llm: LLMBase, diff_dicts):
     """调用 LLM 生成 commit message"""
     diff_summary = summarize_diff(diff_dicts)

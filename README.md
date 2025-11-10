@@ -50,3 +50,9 @@ pip install -r requirements.txt
 ## Notes
 
 1. Please do not use the API key for other purposes.
+
+## To-dos
+
+1. When uploading repos, check conflict with existing repos
+
+2. The color of unselected repos
