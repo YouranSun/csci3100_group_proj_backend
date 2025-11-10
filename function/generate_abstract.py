@@ -2,8 +2,9 @@ from pathlib import Path
 from llm.base import LLMBase
 from prompt.abstract_prompt import build_directory_abstract_prompt, build_file_abstract_prompt
 from db.abstract_db import AbstractDB
-import Repository
+import repository
 from collections import defaultdict
+from typing import List, Tuple, Dict, Any
 
 def summarize_file(llm: LLMBase, file_path, repo_root):
     """读取文件内容并生成摘要，返回相对路径"""
@@ -40,7 +41,7 @@ def summarize_directory(llm: LLMBase, dir_path, repo_root, db: AbstractDB):
     dir_summary = llm.generate(prompt)
     return str(rel_path), dir_summary
 
-def generate_repository_abstract(llm: LLMBase, repo: Repository):
+def generate_repository_abstract(llm: LLMBase, repo: repository):
     repo_root = Path(repo.repo_path).resolve()
     db = AbstractDB(repo.repo_path)
 
@@ -85,3 +86,61 @@ def print_summary_tree(db):
             _print(curr_tree[name], prefix + ("    " if i == len(entries) - 1 else "│   "), full_path)
 
     _print(root)
+
+
+# 工具：把平铺 nodes 转成树
+
+from collections import defaultdict
+from pathlib import Path
+from typing import List, Dict, Any, Tuple
+
+from collections import defaultdict
+from pathlib import Path
+from typing import List, Tuple, Dict, Any
+
+def build_tree(nodes: List[Tuple[str, str, str]]) -> List[Dict[str, Any]]:
+    """
+    nodes: list of (rel_path, node_type, summary)
+    Return: a single root node '.' with children (same logic as print_summary_tree)
+    """
+    def tree():
+        return defaultdict(tree)
+
+    root = tree()
+    summaries: Dict[str, Tuple[str, str]] = {}
+
+    # Build nested dict and summary map
+    for rel_path, node_type, summary in nodes:
+        parts = Path(rel_path).parts or (".",)
+        curr = root
+        for part in parts:
+            curr = curr[part]
+        summaries[str(Path(rel_path))] = (node_type, summary)
+
+    def build_children(curr_tree, parent_path: str) -> List[Dict[str, Any]]:
+        result = []
+        for name in sorted(curr_tree.keys()):
+            # 跳过 '.' 自身，防止嵌套
+            if parent_path == "." and name == ".":
+                continue
+            full_path = str(Path(parent_path) / name) if parent_path != "." else str(Path(name))
+            node_type, summary = summaries.get(full_path, ("unknown", None))
+            child_children = build_children(curr_tree[name], full_path)
+            result.append({
+                "name": name,
+                "type": node_type,
+                "summary": summary,
+                "children": child_children
+            })
+        return result
+
+    # Root node info
+    root_type, root_summary = summaries.get(".", ("dir", None))
+    root_children = build_children(root, ".")
+
+    return [{
+        "name": ".",
+        "type": root_type,
+        "summary": root_summary,
+        "children": root_children
+    }]
