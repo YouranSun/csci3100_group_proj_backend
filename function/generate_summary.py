@@ -1,7 +1,7 @@
 from pathlib import Path
 from llm.base import LLMBase
-from prompt.abstract_prompt import build_directory_abstract_prompt, build_file_abstract_prompt
-from db.abstract_db import AbstractDB
+from prompt.summary_prompt import build_directory_summary_prompt, build_file_summary_prompt
+from db.summary_db import SummaryDB
 import repository
 from collections import defaultdict
 from typing import List, Tuple, Dict, Any
@@ -11,11 +11,12 @@ def summarize_file(llm: LLMBase, file_path, repo_root):
     rel_path = Path(file_path).resolve().relative_to(repo_root)
     with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
         content = f.read()
-    prompt = build_file_abstract_prompt(rel_path.name, content)
+    prompt = build_file_summary_prompt(rel_path.name, content)
     summary = llm.generate(prompt)
+    print(f"file: {file_path} summary: {summary}")
     return str(rel_path), summary
 
-def summarize_directory(llm: LLMBase, dir_path, repo_root, db: AbstractDB):
+def summarize_directory(llm: LLMBase, dir_path, repo_root, db: SummaryDB):
     """递归生成目录摘要，边生成边保存"""
     summaries = []
 
@@ -37,13 +38,14 @@ def summarize_directory(llm: LLMBase, dir_path, repo_root, db: AbstractDB):
 
     merged_text = "\n".join([s[2] for s in summaries])
     rel_path = Path(dir_path).resolve().relative_to(repo_root)
-    prompt = build_directory_abstract_prompt(rel_path.name, merged_text)
+    prompt = build_directory_summary_prompt(rel_path.name, merged_text)
     dir_summary = llm.generate(prompt)
     return str(rel_path), dir_summary
 
 def generate_repository_abstract(llm: LLMBase, repo: repository):
     repo_root = Path(repo.repo_path).resolve()
-    db = AbstractDB(repo.repo_path)
+    db = SummaryDB(repo.repo_path)
+    db.clear_all_nodes()
 
     # 根目录摘要，边递归边保存
     root_rel_path, root_summary = summarize_directory(llm, repo_root, repo_root, db)

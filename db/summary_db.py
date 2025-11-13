@@ -4,7 +4,7 @@ from pathlib import Path
 import hashlib
 from typing import Optional, List, Tuple
 
-class AbstractDB:
+class SummaryDB:
     def __init__(self, git_path: str, base_dir: Optional[str] = None):
         """
         git_path: 项目 .git 根目录
@@ -63,6 +63,10 @@ class AbstractDB:
         c = self.conn.cursor()
         c.execute("SELECT path, type, summary FROM abstracts")
         return c.fetchall()
+    
+    def clear_all_nodes(self):
+        self.cursor.execute("DELETE FROM abstracts")
+        self.conn.commit()
 
     def close(self):
         self.conn.close()

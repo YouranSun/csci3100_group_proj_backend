@@ -2,6 +2,9 @@ import re
 
 from git import Repo
 from pathlib import Path
+from typing import List, Tuple
+
+from db.summary_db import SummaryDB
 
 class Repository:
     def __init__(self, path="."):
@@ -64,6 +67,20 @@ class Repository:
                 })
 
         return results
+
+    def get_commit_messages(self, limit: int = 50):
+        try:
+            commits = list(self.repo.iter_commits("HEAD", max_count=limit))
+            messages = [commit.message.strip() for commit in commits if commit.message]
+            return messages
+        except Exception as e:
+            raise RuntimeError(f"获取 commit 历史失败: {e}")
+        
+    def get_summary(self) -> List[Tuple[str, str, str]]:
+        db = SummaryDB(self.repo_path)
+        nodes = db.list_nodes()
+        db.close()
+        return nodes
 
     def diff_with_head(self):
         """

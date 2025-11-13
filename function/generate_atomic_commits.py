@@ -1,6 +1,7 @@
 from typing import List, Dict
 from llm.base import LLMBase
 from prompt.split_commit_prompt import build_atomic_split_prompt
+import hashlib, json
 
 
 # ========= Step 2: 让 LLM 给出拆分建议 ==========
@@ -59,6 +60,9 @@ def apply_split_suggestions(diff_dicts: List[Dict], split_result: Dict) -> List[
             start_idx = split_points[i]
             end_idx = split_points[i + 1]
 
+            if start_idx == end_idx:
+                continue
+
             old_slice = old_lines[start_idx:end_idx]
             new_slice = new_lines[start_idx:end_idx]
 
@@ -69,6 +73,7 @@ def apply_split_suggestions(diff_dicts: List[Dict], split_result: Dict) -> List[
                 "old_lines": old_slice,
                 "new_lines": new_slice,
             }
+            new_diff["id"] = hashlib.sha256(json.dumps(new_diff, sort_keys=True).encode("utf-8")).hexdigest()
             new_diffs.append(new_diff)
 
     return new_diffs

@@ -21,7 +21,6 @@ class RepositoryManager:
         name = name or Path(path).name
         repo = Repository(path)
         self.repos[path] = repo
-        print("to add")
         self.db.add_repo(path, name)
         return {'path': path, 'name': name}
 
