@@ -14,6 +14,7 @@ def build_atomic_split_prompt(diff_summary: str) -> str:
 Given the following diff summary, please suggest atomic split points.
 Each diff block may contain multiple unrelated code changes.
 You should identify where to split them into smaller commits.
+The division is needed only when there's a clear cut on the implemented function.
 
 Output JSON format strictly as:
 {{

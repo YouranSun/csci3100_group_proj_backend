@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from repository import Repository
+from Repository.repository import Repository
 from llm.openai_llm import OpenAILLM
 from function.generate_commit_message import generate_commit_message
 from function.generate_summary import generate_repository_abstract, print_summary_tree

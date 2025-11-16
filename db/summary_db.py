@@ -1,4 +1,4 @@
-# function/abstract_db.py
+# function/summary_db.py
 import sqlite3
 from pathlib import Path
 import hashlib
@@ -11,13 +11,13 @@ class SummaryDB:
         base_dir: 所有项目存储的基础目录，默认 ~/.myapp/data
         """
         self.project_dir = self._get_project_dir(git_path, base_dir)
-        self.db_path = self.project_dir / "repo_abstracts.db"
+        self.db_path = self.project_dir / "summaries.db"
         self.conn = sqlite3.connect(self.db_path)
         self._init_tables()
 
     @staticmethod
     def _get_project_dir(git_path: str, base_dir: Optional[str] = None) -> Path:
-        project_root = Path(__file__).parent.parent.resolve()  # 假设 AbstractDB 在 project/function/
+        project_root = Path(__file__).parent.parent.resolve() 
         base_dir = Path(base_dir or project_root / "data")
         base_dir.mkdir(parents=True, exist_ok=True)
 
@@ -34,7 +34,7 @@ class SummaryDB:
         """初始化表"""
         c = self.conn.cursor()
         c.execute("""
-        CREATE TABLE IF NOT EXISTS abstracts (
+        CREATE TABLE IF NOT EXISTS summaries (
             path TEXT PRIMARY KEY,
             type TEXT NOT NULL,
             summary TEXT NOT NULL
@@ -46,7 +46,7 @@ class SummaryDB:
         """保存单个节点摘要"""
         c = self.conn.cursor()
         c.execute("""
-        INSERT OR REPLACE INTO abstracts (path, type, summary)
+        INSERT OR REPLACE INTO summaries (path, type, summary)
         VALUES (?, ?, ?)
         """, (path, node_type, summary))
         self.conn.commit()
@@ -54,18 +54,19 @@ class SummaryDB:
     def get_node(self, path: str) -> Optional[Tuple[str, str]]:
         """获取单个节点摘要"""
         c = self.conn.cursor()
-        c.execute("SELECT type, summary FROM abstracts WHERE path = ?", (path,))
+        c.execute("SELECT type, summary FROM summaries WHERE path = ?", (path,))
         row = c.fetchone()
         return row if row else None
 
     def list_nodes(self) -> List[Tuple[str, str, str]]:
         """列出所有节点"""
         c = self.conn.cursor()
-        c.execute("SELECT path, type, summary FROM abstracts")
+        c.execute("SELECT path, type, summary FROM summaries")
         return c.fetchall()
     
     def clear_all_nodes(self):
-        self.cursor.execute("DELETE FROM abstracts")
+        c = self.conn.cursor()
+        c.execute("DELETE FROM summaries")
         self.conn.commit()
 
     def close(self):

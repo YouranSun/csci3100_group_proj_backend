@@ -6,6 +6,7 @@ from router.summary_router import router as summary_router
 from router.commits_router import router as commits_router
 from router.commit_message_router import router as commit_message_router
 from router.insights_router import router as insights_router
+from router.user_router import router as user_router
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -14,7 +15,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # 或者只允许你的前端地址
+    allow_origins=["http://localhost:8080"],  # 前端地址
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -26,3 +27,4 @@ app.include_router(summary_router)
 app.include_router(commits_router)
 app.include_router(commit_message_router)
 app.include_router(insights_router)
+app.include_router(user_router)

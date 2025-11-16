@@ -1,11 +1,12 @@
 from typing import List, Dict
 from llm.base import LLMBase
 from prompt.split_commit_prompt import build_atomic_split_prompt
+from Repository.diff import AtomicDiff, Hunk
 import hashlib, json
 
 
 # ========= Step 2: 让 LLM 给出拆分建议 ==========
-def suggest_commit_splits(llm: LLMBase, diff_dicts: List[Dict]) -> Dict:
+def suggest_commit_splits(llm: LLMBase, diffs: List[AtomicDiff]) -> Dict:
     """
     调用 LLM 生成拆分建议。
     输出形式如：
@@ -16,23 +17,28 @@ def suggest_commit_splits(llm: LLMBase, diff_dicts: List[Dict]) -> Dict:
         ]
     }
     """
-    prompt = build_atomic_split_prompt(diff_dicts)
-    raw_output = llm.generate(prompt)
+    print(diffs)
+    results = {"splits": []}
+    for d in diffs:
+        prompt = build_atomic_split_prompt(d.to_dict())
+        raw_output = llm.generate(prompt)
 
-    # 尝试解析 JSON
-    import json
-    try:
-        result = json.loads(raw_output)
-        if "splits" not in result:
-            raise ValueError
-        return result
-    except Exception:
-        # 如果解析失败，返回空结构
-        return {"splits": []}
+        print(prompt, raw_output)
+
+        import json
+        try:
+            result = json.loads(raw_output)
+            if "splits" not in result:
+                raise ValueError
+            results["splits"].extend(result["splits"])
+        except Exception:
+            pass
+    print(results)
+    return results
 
 
 # ========= Step 3: 应用拆分建议 ==========
-def apply_split_suggestions(diff_dicts: List[Dict], split_result: Dict) -> List[Dict]:
+def apply_split_suggestions(diffs: List[AtomicDiff], split_result: Dict) -> List[AtomicDiff]:
     """
     根据 LLM 输出的分割建议，把每个 diff 拆成更小的原子 diff。
     保证输出格式与输入相同。
@@ -40,20 +46,20 @@ def apply_split_suggestions(diff_dicts: List[Dict], split_result: Dict) -> List[
     new_diffs = []
     split_map = {s["file"]: sorted(set(s.get("split_lines", []))) for s in split_result.get("splits", [])}
 
-    for d in diff_dicts:
-        file = d["file"]
-        old_lines = d.get("old_lines", [])
-        new_lines = d.get("new_lines", [])
-        old_start = d.get("old_start", 0)
-        new_start = d.get("new_start", 0)
+    for d in diffs:
+        file_path = d.file_path
+        is_new_file = d.is_new_file
+        is_deleted_file = d.is_deleted_file
+        old_lines = d.hunk.old_lines if d.hunk.old_lines else []
+        new_lines = d.hunk.new_lines if d.hunk.new_lines else []
+        old_start = d.hunk.old_start if d.hunk.old_start else []
+        new_start = d.hunk.new_start if d.hunk.new_start else []
 
-        # 无拆分建议 → 原样保留
-        if file not in split_map or not split_map[file]:
+        if file_path not in split_map or not split_map[file_path]:
             new_diffs.append(d)
             continue
 
-        # 构造拆分点（前后补全首尾）
-        splits = split_map[file]
+        splits = split_map[file_path]
         split_points = [0] + [min(len(new_lines), s) for s in splits if s < len(new_lines)] + [len(new_lines)]
 
         for i in range(len(split_points) - 1):
@@ -66,24 +72,27 @@ def apply_split_suggestions(diff_dicts: List[Dict], split_result: Dict) -> List[
             old_slice = old_lines[start_idx:end_idx]
             new_slice = new_lines[start_idx:end_idx]
 
-            new_diff = {
-                "file": file,
-                "old_start": old_start + start_idx,
-                "new_start": new_start + start_idx,
-                "old_lines": old_slice,
-                "new_lines": new_slice,
-            }
-            new_diff["id"] = hashlib.sha256(json.dumps(new_diff, sort_keys=True).encode("utf-8")).hexdigest()
+            new_diff = AtomicDiff(
+                file_path=file_path,
+                is_new_file=is_new_file,
+                is_deleted_file=is_deleted_file,
+                hunk=Hunk(
+                    old_start=old_start,
+                    new_start=new_start + start_idx,
+                    old_lines=old_slice,
+                    new_lines=new_slice,
+                )
+            )
             new_diffs.append(new_diff)
 
     return new_diffs
 
 
 # ========= Step 4: 组合式接口 ==========
-def generate_atomic_commits(llm: LLMBase, diff_dicts: List[Dict]) -> List[Dict]:
+def generate_atomic_commits(llm: LLMBase, diffs: List[AtomicDiff]) -> List[AtomicDiff]:
     """
     高层接口：自动调用 LLM → 获取拆分建议 → 应用拆分。
     """
-    split_result = suggest_commit_splits(llm, diff_dicts)
-    atomic_diffs = apply_split_suggestions(diff_dicts, split_result)
+    split_result = suggest_commit_splits(llm, diffs)
+    atomic_diffs = apply_split_suggestions(diffs, split_result)
     return atomic_diffs

@@ -1,6 +1,6 @@
 from typing import List, Dict, Any
+from Repository.diff import AtomicDiff, Hunk
 from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_distances
 import numpy as np
 import uuid
 from scipy.cluster.hierarchy import linkage, fcluster
@@ -13,19 +13,19 @@ def get_model() -> SentenceTransformer:
         _model = SentenceTransformer("all-MiniLM-L6-v2")
     return _model
 
-def embed_atomic_diffs(atomic_diffs: List[Dict[str, Any]]) -> np.ndarray:
+def embed_atomic_diffs(atomic_diffs: List[AtomicDiff]) -> np.ndarray:
     model = get_model()
     texts = [
-        f"file: {d['file']}\n"
-        f"old:\n" + "\n".join(d.get("old_lines", [])) + "\n"
-        f"new:\n" + "\n".join(d.get("new_lines", []))
+        f"file_path: {d.file_path}\n"
+        f"old:\n" + "\n".join(d.hunk.old_lines) + "\n"
+        f"new:\n" + "\n".join(d.hunk.new_lines)
         for d in atomic_diffs
     ]
     embeddings = model.encode(texts, show_progress_bar=False)
     return np.array(embeddings)
 
 def generate_suggested_commit_groups_agglomerative(
-    atomic_diffs: List[Dict[str, Any]], similarity_threshold: float = 0.7
+    atomic_diffs: List[AtomicDiff], similarity_threshold: float = 0.7
 ) -> List[Dict[str, Any]]:
     """
     使用层次聚类（agglomerative clustering）生成 suggested commit groups

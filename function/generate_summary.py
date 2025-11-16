@@ -2,7 +2,7 @@ from pathlib import Path
 from llm.base import LLMBase
 from prompt.summary_prompt import build_directory_summary_prompt, build_file_summary_prompt
 from db.summary_db import SummaryDB
-import repository
+import Repository.repository as repository
 from collections import defaultdict
 from typing import List, Tuple, Dict, Any
 
@@ -42,7 +42,7 @@ def summarize_directory(llm: LLMBase, dir_path, repo_root, db: SummaryDB):
     dir_summary = llm.generate(prompt)
     return str(rel_path), dir_summary
 
-def generate_repository_abstract(llm: LLMBase, repo: repository):
+def generate_repository_summary(llm: LLMBase, repo: repository):
     repo_root = Path(repo.repo_path).resolve()
     db = SummaryDB(repo.repo_path)
     db.clear_all_nodes()

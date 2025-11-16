@@ -2,10 +2,11 @@ from llm.base import LLMBase
 from prompt.commit_message_prompt import build_commit_prompt
 
 def summarize_diff(diff_dicts):
-    """把diff字典转化为人类可读的摘要"""
     lines = []
     for d in diff_dicts:
-        lines.append(f"File: {d['file']}")
+        lines.append(f"File: {d['file_path']}")
+        lines.append(f"Is New File: {d['is_new_file']}")
+        lines.append(f"Is Deleted File: {d['is_deleted_file']}")
         if d['old_lines']:
             lines.append("Removed:")
             lines += [f"  - {x}" for x in d['old_lines']]
@@ -17,7 +18,6 @@ def summarize_diff(diff_dicts):
 
 
 def generate_commit_message(llm: LLMBase, diff_dicts):
-    """调用 LLM 生成 commit message"""
     diff_summary = summarize_diff(diff_dicts)
     prompt = build_commit_prompt(diff_summary)
     return llm.generate(prompt)
