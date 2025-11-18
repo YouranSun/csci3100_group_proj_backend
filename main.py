@@ -28,3 +28,11 @@ app.include_router(commits_router)
 app.include_router(commit_message_router)
 app.include_router(insights_router)
 app.include_router(user_router)
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(
+        "main:app", host="127.0.0.1", port=8001, reload=True, log_level="debug"
+    )

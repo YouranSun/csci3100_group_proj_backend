@@ -1,6 +1,6 @@
 import unittest
 from fastapi.testclient import TestClient
-from router import commits_router
+import main
 
 class DummyRepo:
     def __init__(self, repo_path):
@@ -45,7 +45,7 @@ class TestCommitsRouter(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         patch_deps()
-        cls.client = TestClient(commits_router.router)
+        cls.client = TestClient(main.app)
 
     def test_get_commit_groups(self):
         req = {"repo_path": "repo"}

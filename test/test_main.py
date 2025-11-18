@@ -1,7 +1,12 @@
 import unittest
+from fastapi.testclient import TestClient
 import main
 
 class TestMainApp(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.client = TestClient(main.app)
+
     def test_app_instance(self):
         self.assertTrue(hasattr(main, "app"))
         self.assertEqual(main.app.title, "FastAPI")
@@ -18,6 +23,10 @@ class TestMainApp(unittest.TestCase):
         self.assertIn("/commit_message", routes)
         self.assertIn("/insights", routes)
         self.assertTrue(any("/user" in r for r in routes))
+
+    def test_repos_endpoint(self):
+        response = self.client.get("/repos")
+        self.assertIn(response.status_code, [200, 422])  # 422 if missing dependencies
 
 if __name__ == "__main__":
     unittest.main()

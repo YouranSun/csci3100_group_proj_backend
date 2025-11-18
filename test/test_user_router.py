@@ -1,6 +1,6 @@
 import unittest
 from fastapi.testclient import TestClient
-from router import user_router
+import main
 
 class DummyUserDB:
     def __init__(self):
@@ -43,7 +43,7 @@ class TestUserRouter(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         patch_deps()
-        cls.client = TestClient(user_router.router)
+        cls.client = TestClient(main.app)
 
     def test_register(self):
         req = {"username": "newuser", "password": "pw"}

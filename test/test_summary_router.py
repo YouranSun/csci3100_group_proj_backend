@@ -1,6 +1,6 @@
 import unittest
 from fastapi.testclient import TestClient
-from router import summary_router
+import main
 
 class DummyRepo:
     def __init__(self, repo_path):
@@ -33,7 +33,7 @@ class TestSummaryRouter(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         patch_deps()
-        cls.client = TestClient(summary_router.router)
+        cls.client = TestClient(main.app)
 
     def test_get_summary(self):
         req = {"repo_path": "repo"}

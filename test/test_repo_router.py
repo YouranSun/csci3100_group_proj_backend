@@ -1,6 +1,6 @@
 import unittest
 from fastapi.testclient import TestClient
-from router import repo_router
+import main
 
 class DummyRepoDB:
     def close(self): pass
@@ -25,7 +25,7 @@ class TestRepoRouter(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         patch_deps()
-        cls.client = TestClient(repo_router.router)
+        cls.client = TestClient(main.app)
 
     def test_list_repos(self):
         response = self.client.get("/repos")

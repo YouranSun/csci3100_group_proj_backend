@@ -1,6 +1,6 @@
 import unittest
 from fastapi.testclient import TestClient
-from router import insights_router
+import main
 
 class DummyRepo:
     def __init__(self, repo_path):
@@ -29,7 +29,7 @@ class TestInsightsRouter(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         patch_deps()
-        cls.client = TestClient(insights_router.router)
+        cls.client = TestClient(main.app)
 
     def test_generate_future_suggestions(self):
         req = {"repo_path": "repo", "requirements": "Improve", "max_commits": 5}
