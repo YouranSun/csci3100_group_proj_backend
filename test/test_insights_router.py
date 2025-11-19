@@ -32,7 +32,7 @@ class TestInsightsRouter(unittest.TestCase):
         cls.client = TestClient(main.app)
 
     def test_generate_future_suggestions(self):
-        req = {"repo_path": "repo", "requirements": "Improve", "max_commits": 5}
+        req = {"repo_path": "test/example/repo", "requirements": "Improve", "max_commits": 5}
         response = self.client.post("/insights", json=req)
         self.assertEqual(response.status_code, 200)
         self.assertIn("insights", response.json())

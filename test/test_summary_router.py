@@ -36,13 +36,13 @@ class TestSummaryRouter(unittest.TestCase):
         cls.client = TestClient(main.app)
 
     def test_get_summary(self):
-        req = {"repo_path": "repo"}
+        req = {"repo_path": "test/example/repo"}
         response = self.client.post("/summary", json=req)
         self.assertEqual(response.status_code, 200)
         self.assertIn("tree", response.json())
 
     def test_refresh_summary(self):
-        req = {"repo_path": "repo"}
+        req = {"repo_path": "test/example/repo"}
         response = self.client.post("/summary/refresh", json=req)
         self.assertEqual(response.status_code, 200)
         self.assertIn("tree", response.json())

@@ -60,25 +60,25 @@ class TestRepository(unittest.TestCase):
         patch_deps()
 
     def test_init_and_to_dict(self):
-        repo = repository.Repository("testpath")
+        repo = repository.Repository("test/example/repo")
         info = repo.to_dict()
         self.assertIn("path", info)
         self.assertIn("name", info)
         self.assertIn("last_commit", info)
 
     def test_get_summary(self):
-        repo = repository.Repository("testpath")
+        repo = repository.Repository("test/example/repo")
         nodes = repo.get_summary()
         self.assertTrue(nodes)
         self.assertEqual(nodes[0][0], "foo.py")
 
     def test_get_summary_tree(self):
-        repo = repository.Repository("testpath")
+        repo = repository.Repository("test/example/repo")
         tree = repo.get_summary_tree()
         self.assertTrue(tree)
 
     def test_list_commit_groups(self):
-        repo = repository.Repository("testpath")
+        repo = repository.Repository("test/example/repo")
         groups = repo.list_commit_groups()
         self.assertTrue(groups)
         self.assertEqual(groups[0]["id"], "g1")

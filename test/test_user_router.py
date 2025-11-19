@@ -46,18 +46,18 @@ class TestUserRouter(unittest.TestCase):
         cls.client = TestClient(main.app)
 
     def test_register(self):
-        req = {"username": "newuser", "password": "pw"}
+        req = {"username": "newuser", "password": "pw", "repo_path": "test/example/repo"}
         response = self.client.post("/user/register", json=req)
         self.assertEqual(response.status_code, 200)
         self.assertIn("username", response.json())
 
     def test_register_duplicate(self):
-        req = {"username": "u", "password": "pw"}
+        req = {"username": "u", "password": "pw", "repo_path": "test/example/repo"}
         response = self.client.post("/user/register", json=req)
         self.assertEqual(response.status_code, 400)
 
     def test_login_logout_me(self):
-        req = {"username": "u", "password": "p"}
+        req = {"username": "u", "password": "p", "repo_path": "test/example/repo"}
         response = self.client.post("/user/login", json=req)
         self.assertEqual(response.status_code, 200)
         cookies = response.cookies

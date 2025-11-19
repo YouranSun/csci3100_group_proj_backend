@@ -5,9 +5,9 @@ import main
 class DummyRepo:
     def __init__(self, repo_path):
         self.repo_path = repo_path
-    def generate_group_commit_message(self, llm, group_id): pass
-    def get_commit_message(self, group_id): return ("msg",)
-    def modify_commit_message(self, group_id, message): pass
+    def generate_group_commit_message(self, llm, group_id): return "msg"
+    def get_commit_message(self, group_id): return "msg"
+    def modify_commit_message(self, group_id, message): return message
 
 class DummyLLM:
     def __init__(self, model): pass
@@ -39,21 +39,21 @@ class TestCommitMessageRouter(unittest.TestCase):
         cls.client = TestClient(main.app)
 
     def test_generate_group_commit_message(self):
-        req = {"repo_path": "repo", "group_id": "gid"}
+        req = {"repo_path": "test/example/repo", "group_id": "gid"}
         response = self.client.post("/commit_message/generate", json=req)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["group_id"], "gid")
         self.assertEqual(response.json()["message"], "msg")
 
     def test_get_commit_message(self):
-        req = {"repo_path": "repo", "group_id": "gid"}
+        req = {"repo_path": "test/example/repo", "group_id": "gid"}
         response = self.client.post("/commit_message", json=req)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["group_id"], "gid")
         self.assertEqual(response.json()["message"], "msg")
 
     def test_edit_commit_message(self):
-        req = {"repo_path": "repo", "group_id": "gid", "message": "newmsg"}
+        req = {"repo_path": "test/example/repo", "group_id": "gid", "message": "newmsg"}
         response = self.client.post("/commit_message/edit", json=req)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["group_id"], "gid")

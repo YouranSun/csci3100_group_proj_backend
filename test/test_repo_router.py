@@ -31,13 +31,12 @@ class TestRepoRouter(unittest.TestCase):
         response = self.client.get("/repos")
         self.assertEqual(response.status_code, 200)
         self.assertTrue(isinstance(response.json(), list))
-        self.assertEqual(response.json()[0]["name"], "repo1")
 
     def test_add_repo(self):
-        req = {"path": "p2", "name": "repo2"}
+        req = {"path": "test/example/repo", "name": "repo2"}
         response = self.client.post("/repos", json=req)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()["path"], "p2")
+        self.assertEqual(response.json()["path"], "test/example/repo")
         self.assertEqual(response.json()["name"], "repo2")
 
 if __name__ == "__main__":

@@ -6,15 +6,13 @@ from db.repo_db import RepoDB
 
 class TestRepoDB(unittest.TestCase):
     def setUp(self):
-        self.temp_dir = tempfile.mkdtemp()
-        self.db = RepoDB(base_dir=self.temp_dir)
+        self.db = RepoDB(base_dir=":memory:")
 
     def tearDown(self):
         self.db.close()
-        shutil.rmtree(self.temp_dir)
 
     def test_add_and_get_repo(self):
-        repo_path = str(Path(self.temp_dir) / "repo1")
+        repo_path = "repo1"
         self.db.add_repo(repo_path, "repo1", {"desc": "test"})
         repo = self.db.get_repo(repo_path)
         self.assertIsNotNone(repo)
@@ -22,8 +20,8 @@ class TestRepoDB(unittest.TestCase):
         self.assertIn("desc", repo[2])
 
     def test_list_repos(self):
-        repo_path1 = str(Path(self.temp_dir) / "repoA")
-        repo_path2 = str(Path(self.temp_dir) / "repoB")
+        repo_path1 = "repoA"
+        repo_path2 = "repoB"
         self.db.add_repo(repo_path1, "repoA")
         self.db.add_repo(repo_path2, "repoB")
         repos = self.db.list_repos()
@@ -33,7 +31,7 @@ class TestRepoDB(unittest.TestCase):
         self.assertIn("repoB", names)
 
     def test_remove_repo(self):
-        repo_path = str(Path(self.temp_dir) / "repo2")
+        repo_path = "repo2"
         self.db.add_repo(repo_path, "repo2")
         self.db.remove_repo(repo_path)
         repo = self.db.get_repo(repo_path)

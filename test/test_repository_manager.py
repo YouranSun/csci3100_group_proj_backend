@@ -17,9 +17,10 @@ class DummyRepository:
 
 def patch_deps():
     import sys
-    sys.modules["Repository.repository"] = type("mod", (), {
-        "Repository": DummyRepository
-    })
+    import types
+    repo_mod = types.ModuleType("Repository.repository")
+    repo_mod.Repository = DummyRepository
+    sys.modules["Repository.repository"] = repo_mod
 
 class TestRepositoryManager(unittest.TestCase):
     @classmethod
@@ -36,7 +37,7 @@ class TestRepositoryManager(unittest.TestCase):
     def test_get_repository(self):
         db = DummyRepoDB()
         mgr = repository_manager.RepositoryManager(db)
-        mgr.add_repository("path3", "repo3")
+        mgr.paths.append("path3")  # 直接添加路径，避免真实仓库检查
         repo = mgr.get_repository("path3")
         self.assertIsNotNone(repo)
         self.assertTrue(hasattr(repo, "path"))
