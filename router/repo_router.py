@@ -28,7 +28,7 @@ def list_repos(manager: RepositoryManager = Depends(get_repo_manager)):
 def add_repo(req: AddRepoRequest, manager: RepositoryManager = Depends(get_repo_manager)):
     print(req)
     try:
-        repo_info = manager.add_repository(req.path, req.name)
+        repo_info = manager.add_repository(req.repo_path, req.name)
         return repo_info
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
