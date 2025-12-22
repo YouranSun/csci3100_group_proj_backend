@@ -1,645 +1,117 @@
-test_adjust_later_diffs (test_apply_commit_groups.TestApplyCommitGroups.test_adjust_later_diffs) ... FAIL
-test_adjust_later_groups (test_apply_commit_groups.TestApplyCommitGroups.test_adjust_later_groups) ... FAIL
-test_parse_diff_blocks_basic (test_apply_commit_groups.TestApplyCommitGroups.test_parse_diff_blocks_basic) ... ok
-test_build_commit_prompt (test_commit_message_prompt.TestCommitMessagePrompt.test_build_commit_prompt) ... ok
-test_edit_commit_message (test_commit_message_router.TestCommitMessageRouter.test_edit_commit_message) ... ok
-test_generate_group_commit_message (test_commit_message_router.TestCommitMessageRouter.test_generate_group_commit_message) ... FAIL
-test_get_commit_message (test_commit_message_router.TestCommitMessageRouter.test_get_commit_message) ... FAIL
-test_add_and_get_atomic_diff (test_commits_db.TestCommitsDB.test_add_and_get_atomic_diff) ... ok
-test_clear_all_atomic_diffs (test_commits_db.TestCommitsDB.test_clear_all_atomic_diffs) ... ok
-test_clear_all_groups (test_commits_db.TestCommitsDB.test_clear_all_groups) ... ok
-test_commit_message (test_commits_db.TestCommitsDB.test_commit_message) ... ok
-test_create_and_list_commit_group (test_commits_db.TestCommitsDB.test_create_and_list_commit_group) ... ok
-test_delete_commit_group (test_commits_db.TestCommitsDB.test_delete_commit_group) ... ok
-test_metadata_hash (test_commits_db.TestCommitsDB.test_metadata_hash) ... ok
-test_rename_commit_group (test_commits_db.TestCommitsDB.test_rename_commit_group) ... ok
-test_set_group_diffs (test_commits_db.TestCommitsDB.test_set_group_diffs) ... ok
-test_commit_groups (test_commits_router.TestCommitsRouter.test_commit_groups) ... ok
-test_create_commit_group (test_commits_router.TestCommitsRouter.test_create_commit_group) ... ERROR
-test_delete_commit_group (test_commits_router.TestCommitsRouter.test_delete_commit_group) ... ok
-test_get_atomic_diffs (test_commits_router.TestCommitsRouter.test_get_atomic_diffs) ... ok
-test_get_commit_groups (test_commits_router.TestCommitsRouter.test_get_commit_groups) ... ok
-test_move_diff (test_commits_router.TestCommitsRouter.test_move_diff) ... ok
-test_reorder_groups (test_commits_router.TestCommitsRouter.test_reorder_groups) ... ok
-test_apply_deleted_file (test_diff.TestAtomicDiff.test_apply_deleted_file) ... ok
-test_apply_hunk_mismatch (test_diff.TestAtomicDiff.test_apply_hunk_mismatch) ... ok
-test_apply_modify (test_diff.TestAtomicDiff.test_apply_modify) ... ok
-test_apply_new_file (test_diff.TestAtomicDiff.test_apply_new_file) ... ERROR
-test_to_dict_and_build_from_dict (test_diff.TestAtomicDiff.test_to_dict_and_build_from_dict) ... ok
-test_build_future_prompt (test_future_suggestion_prompt.TestFutureSuggestionPrompt.test_build_future_prompt) ... ok
-test_apply_split_suggestions (test_generate_atomic_commits.TestGenerateAtomicCommits.test_apply_split_suggestions) ... ok
-test_generate_atomic_commits (test_generate_atomic_commits.TestGenerateAtomicCommits.test_generate_atomic_commits) ... ok
-test_suggest_commit_splits (test_generate_atomic_commits.TestGenerateAtomicCommits.test_suggest_commit_splits) ... ok
-test_generate_commit_message (test_generate_commit_message.TestGenerateCommitMessage.test_generate_commit_message) ... ok
-test_summarize_diff (test_generate_commit_message.TestGenerateCommitMessage.test_summarize_diff) ... ok
-test_generate_future_suggestion (test_generate_future_suggestion.TestGenerateFutureSuggestion.test_generate_future_suggestion) ... ok
-test_generate_suggested_commit_groups_agglomerative (test_generate_suggested_commit_groups.TestGenerateSuggestedCommitGroups.test_generate_suggested_commit_groups_agglomerative) ... ok
-test_build_tree (test_generate_summary.TestGenerateSummary.test_build_tree) ... ok
-test_summarize_file (test_generate_summary.TestGenerateSummary.test_summarize_file) ... FAIL
-test_generate_future_suggestions (test_insights_router.TestInsightsRouter.test_generate_future_suggestions) ... ERROR
-test_chat (test_llm_base.TestLLMBase.test_chat) ... ok
-test_generate (test_llm_base.TestLLMBase.test_generate) ... ok
-test_generate (test_llm_openai_llm.TestOpenAILLM.test_generate) ... ERROR
-test_app_instance (test_main.TestMainApp.test_app_instance) ... ok
-test_cors_middleware (test_main.TestMainApp.test_cors_middleware) ... ok
-test_repos_endpoint (test_main.TestMainApp.test_repos_endpoint) ... ok
-test_router_registered (test_main.TestMainApp.test_router_registered) ... ok
-test_add_and_get_repo (test_repo_db.TestRepoDB.test_add_and_get_repo) ... ok
-test_list_repos (test_repo_db.TestRepoDB.test_list_repos) ... ok
-test_remove_repo (test_repo_db.TestRepoDB.test_remove_repo) ... ok
-test_add_repo (test_repo_router.TestRepoRouter.test_add_repo) ... FAIL
-test_list_repos (test_repo_router.TestRepoRouter.test_list_repos) ... ok
-test_get_summary (test_repository.TestRepository.test_get_summary) ... FAIL
-test_get_summary_tree (test_repository.TestRepository.test_get_summary_tree) ... FAIL
-test_init_and_to_dict (test_repository.TestRepository.test_init_and_to_dict) ... ok
-test_list_commit_groups (test_repository.TestRepository.test_list_commit_groups) ... FAIL
-test_add_and_list_repository (test_repository_manager.TestRepositoryManager.test_add_and_list_repository) ... ok
-test_get_repository (test_repository_manager.TestRepositoryManager.test_get_repository) ... FAIL
-test_remove_repository (test_repository_manager.TestRepositoryManager.test_remove_repository) ... ok
-test_add_repo_request (test_router_request.TestRouterRequest.test_add_repo_request) ... ok
-test_commit_group_request (test_router_request.TestRouterRequest.test_commit_group_request) ... ok
-test_delete_group_request (test_router_request.TestRouterRequest.test_delete_group_request) ... ok
-test_future_suggestions_request (test_router_request.TestRouterRequest.test_future_suggestions_request) ... ok
-test_move_diff_request (test_router_request.TestRouterRequest.test_move_diff_request) ... ok
-test_reorder_groups_request (test_router_request.TestRouterRequest.test_reorder_groups_request) ... ok
-test_user_register_request (test_router_request.TestRouterRequest.test_user_register_request) ... ok
-test_user_response (test_router_request.TestRouterRequest.test_user_response) ... ok
-test_build_atomic_split_prompt (test_split_commit_prompt.TestSplitCommitPrompt.test_build_atomic_split_prompt) ... ok
-test_clear_all_nodes (test_summary_db.TestSummaryDB.test_clear_all_nodes) ... ok
-test_list_nodes (test_summary_db.TestSummaryDB.test_list_nodes) ... ok
-test_save_and_get_node (test_summary_db.TestSummaryDB.test_save_and_get_node) ... ok
-test_build_directory_summary_prompt (test_summary_prompt.TestSummaryPrompt.test_build_directory_summary_prompt) ... ok
-test_build_file_summary_prompt (test_summary_prompt.TestSummaryPrompt.test_build_file_summary_prompt) ... ok
-test_get_summary (test_summary_router.TestSummaryRouter.test_get_summary) ... ok
-test_refresh_summary (test_summary_router.TestSummaryRouter.test_refresh_summary) ... ERROR
-test_add_and_get_user (test_user_db.TestUserDB.test_add_and_get_user) ... ok
-test_add_duplicate_user (test_user_db.TestUserDB.test_add_duplicate_user) ... ok
-test_list_users (test_user_db.TestUserDB.test_list_users) ... ok
-test_verify_user (test_user_db.TestUserDB.test_verify_user) ... ok
-test_login_logout_me (test_user_router.TestUserRouter.test_login_logout_me) ... FAIL
-test_register (test_user_router.TestUserRouter.test_register) ... FAIL
-test_register_duplicate (test_user_router.TestUserRouter.test_register_duplicate) ... ok
+test_api_integration (unittest.loader._FailedTest.test_api_integration) ... ERROR
+test_commit_message_router (unittest.loader._FailedTest.test_commit_message_router) ... ERROR
+test_commits_router (unittest.loader._FailedTest.test_commits_router) ... ERROR
+test_insights_router (unittest.loader._FailedTest.test_insights_router) ... ERROR
+test_repo_router (unittest.loader._FailedTest.test_repo_router) ... ERROR
+test_summary_router (unittest.loader._FailedTest.test_summary_router) ... ERROR
+test_user_router (unittest.loader._FailedTest.test_user_router) ... ERROR
 
 ======================================================================
-ERROR: test_create_commit_group (test_commits_router.TestCommitsRouter.test_create_commit_group)
+ERROR: test_api_integration (unittest.loader._FailedTest.test_api_integration)
 ----------------------------------------------------------------------
+ImportError: Failed to import test module: test_api_integration
 Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_commits_router.py", line 66, in test_create_commit_group
-    self.assertEqual(response.json()["id"], "g2")
-                     ~~~~~~~~~~~~~~~^^^^^^
-KeyError: 'id'
-
-======================================================================
-ERROR: test_apply_new_file (test_diff.TestAtomicDiff.test_apply_new_file)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_diff.py", line 27, in test_apply_new_file
-    diff.apply(repo_root)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\Repository\diff.py", line 58, in apply
-    file.write_text("\n".join(self._reconstruct_from_new_file()))
-                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'AtomicDiff' object has no attribute '_reconstruct_from_new_file'
-
-======================================================================
-ERROR: test_generate_future_suggestions (test_insights_router.TestInsightsRouter.test_generate_future_suggestions)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
-    yield
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
-    resp = self._pool.handle_request(req)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
-    raise exc from None
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
-    response = connection.handle_request(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
-    raise exc
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
-    stream = self._connect(request)
-             ^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
-    stream = self._network_backend.connect_tcp(**kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
-    with map_exceptions(exc_map):
-  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
-    self.gen.throw(typ, value, traceback)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
-    raise to_exc(exc) from exc
-httpcore.ConnectTimeout: timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_base_client.py", line 982, in request
-    response = self._client.send(
-               ^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
-    response = self._send_handling_auth(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
-    response = self._send_handling_redirects(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
-    response = self._send_single_request(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
-    response = transport.handle_request(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
-    with map_httpcore_exceptions():
-  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
-    self.gen.throw(typ, value, traceback)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
-    raise mapped_exc(message) from exc
-httpx.ConnectTimeout: timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_insights_router.py", line 36, in test_generate_future_suggestions
-    response = self.client.post("/insights", json=req)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\testclient.py", line 552, in post
-    return super().post(
-           ^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 1144, in post
-    return self.request(
-           ^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\testclient.py", line 451, in request
-    return super().request(
-           ^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 825, in request
-    return self.send(request, auth=auth, follow_redirects=follow_redirects)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
-    response = self._send_handling_auth(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
-    response = self._send_handling_redirects(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
-    response = self._send_single_request(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
-    response = transport.handle_request(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\testclient.py", line 354, in handle_request
-    raise exc
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\testclient.py", line 351, in handle_request
-    portal.call(self.app, scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\anyio\from_thread.py", line 321, in call
-    return cast(T_Retval, self.start_task_soon(func, *args).result())
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 456, in result
-    return self.__get_result()
-           ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
-    raise self._exception
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\anyio\from_thread.py", line 252, in _call_func
-    retval = await retval_or_awaitable
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\applications.py", line 1134, in __call__
-    await super().__call__(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
-    raise exc
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
-    await self.app(scope, receive, _send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
-    await self.app(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
-    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
-    await self.app(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
-    await route.handle(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
-    await self.app(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\routing.py", line 125, in app
-    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\routing.py", line 111, in app
-    response = await f(request)
-               ^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\routing.py", line 391, in app
-    raw_response = await run_endpoint_function(
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\routing.py", line 292, in run_endpoint_function
-    return await run_in_threadpool(dependant.call, **values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
-    return await anyio.to_thread.run_sync(func)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
-    return await get_async_backend().run_sync_in_worker_thread(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2485, in run_sync_in_worker_thread
-    return await future
-           ^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
-    result = context.run(func, *args)
-             ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\router\insights_router.py", line 17, in generate_future_suggestions
-    insights = repo.generate_future_suggestion(llm, req.requirements, req.max_commits)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\Repository\repository.py", line 170, in generate_future_suggestion
-    insights = generate_future_suggestion(requirements, commit_history, code_summary, llm)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\function\generate_future_suggestion.py", line 20, in generate_future_suggestion
-    suggestion = llm.generate(prompt)
-                 ^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\llm\openai_llm.py", line 11, in generate
-    resp = self.client.chat.completions.create(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
-    return self._post(
-           ^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1259, in post
-    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1000, in request
-    raise APITimeoutError(request=request) from err
-openai.APITimeoutError: Request timed out.
-
-======================================================================
-ERROR: test_generate (test_llm_openai_llm.TestOpenAILLM.test_generate)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
-    yield
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
-    resp = self._pool.handle_request(req)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
-    raise exc from None
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
-    response = connection.handle_request(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
-    raise exc
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
-    stream = self._connect(request)
-             ^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
-    stream = self._network_backend.connect_tcp(**kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
-    with map_exceptions(exc_map):
-  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
-    self.gen.throw(typ, value, traceback)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
-    raise to_exc(exc) from exc
-httpcore.ConnectTimeout: timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_base_client.py", line 982, in request
-    response = self._client.send(
-               ^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
-    response = self._send_handling_auth(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
-    response = self._send_handling_redirects(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
-    response = self._send_single_request(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
-    response = transport.handle_request(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
-    with map_httpcore_exceptions():
-  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
-    self.gen.throw(typ, value, traceback)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
-    raise mapped_exc(message) from exc
-httpx.ConnectTimeout: timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_llm_openai_llm.py", line 38, in test_generate
-    result = llm.generate("hello")
-             ^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\llm\openai_llm.py", line 11, in generate
-    resp = self.client.chat.completions.create(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
-    return self._post(
-           ^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1259, in post
-    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1000, in request
-    raise APITimeoutError(request=request) from err
-openai.APITimeoutError: Request timed out.
-
-======================================================================
-ERROR: test_refresh_summary (test_summary_router.TestSummaryRouter.test_refresh_summary)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
-    yield
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
-    resp = self._pool.handle_request(req)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
-    raise exc from None
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
-    response = connection.handle_request(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
-    raise exc
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
-    stream = self._connect(request)
-             ^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
-    stream = self._network_backend.connect_tcp(**kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
-    with map_exceptions(exc_map):
-  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
-    self.gen.throw(typ, value, traceback)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
-    raise to_exc(exc) from exc
-httpcore.ConnectTimeout: timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_base_client.py", line 982, in request
-    response = self._client.send(
-               ^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
-    response = self._send_handling_auth(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
-    response = self._send_handling_redirects(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
-    response = self._send_single_request(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
-    response = transport.handle_request(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
-    with map_httpcore_exceptions():
-  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
-    self.gen.throw(typ, value, traceback)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
-    raise mapped_exc(message) from exc
-httpx.ConnectTimeout: timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_summary_router.py", line 46, in test_refresh_summary
-    response = self.client.post("/summary/refresh", json=req)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\testclient.py", line 552, in post
-    return super().post(
-           ^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 1144, in post
-    return self.request(
-           ^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\testclient.py", line 451, in request
-    return super().request(
-           ^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 825, in request
-    return self.send(request, auth=auth, follow_redirects=follow_redirects)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
-    response = self._send_handling_auth(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
-    response = self._send_handling_redirects(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
-    response = self._send_single_request(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
-    response = transport.handle_request(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\testclient.py", line 354, in handle_request
-    raise exc
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\testclient.py", line 351, in handle_request
-    portal.call(self.app, scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\anyio\from_thread.py", line 321, in call
-    return cast(T_Retval, self.start_task_soon(func, *args).result())
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 456, in result
-    return self.__get_result()
-           ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
-    raise self._exception
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\anyio\from_thread.py", line 252, in _call_func
-    retval = await retval_or_awaitable
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\applications.py", line 1134, in __call__
-    await super().__call__(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
-    raise exc
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
-    await self.app(scope, receive, _send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
-    await self.app(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
-    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
-    await self.app(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
-    await route.handle(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
-    await self.app(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\routing.py", line 125, in app
-    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\routing.py", line 111, in app
-    response = await f(request)
-               ^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\routing.py", line 391, in app
-    raw_response = await run_endpoint_function(
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\fastapi\routing.py", line 292, in run_endpoint_function
-    return await run_in_threadpool(dependant.call, **values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
-    return await anyio.to_thread.run_sync(func)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
-    return await get_async_backend().run_sync_in_worker_thread(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2485, in run_sync_in_worker_thread
-    return await future
-           ^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
-    result = context.run(func, *args)
-             ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\router\summary_router.py", line 33, in refresh_summary
-    repo.generate_summary(llm)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\Repository\repository.py", line 146, in generate_summary
-    generate_repository_summary(llm, self)
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\function\generate_summary.py", line 51, in generate_repository_summary
-    root_rel_path, root_summary = summarize_directory(llm, repo_root, repo_root, db)
-                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\function\generate_summary.py", line 31, in summarize_directory
-    rel_path, summary = summarize_file(llm, entry, repo_root)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\function\generate_summary.py", line 15, in summarize_file
-    summary = llm.generate(prompt)
-              ^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\llm\openai_llm.py", line 11, in generate
-    resp = self.client.chat.completions.create(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
-    return self._post(
-           ^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1259, in post
-    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1000, in request
-    raise APITimeoutError(request=request) from err
-openai.APITimeoutError: Request timed out.
-
-======================================================================
-FAIL: test_adjust_later_diffs (test_apply_commit_groups.TestApplyCommitGroups.test_adjust_later_diffs)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_apply_commit_groups.py", line 72, in test_adjust_later_diffs
-    self.assertEqual(d2.hunk.old_start, 4)
-AssertionError: 3 != 4
-
-======================================================================
-FAIL: test_adjust_later_groups (test_apply_commit_groups.TestApplyCommitGroups.test_adjust_later_groups)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_apply_commit_groups.py", line 62, in test_adjust_later_groups
-    self.assertEqual(d2.hunk.old_start, 4)  # 原为3，被+1
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: 3 != 4
-
-======================================================================
-FAIL: test_generate_group_commit_message (test_commit_message_router.TestCommitMessageRouter.test_generate_group_commit_message)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_commit_message_router.py", line 46, in test_generate_group_commit_message
-    self.assertEqual(response.json()["message"], "msg")
-AssertionError: 'newmsg' != 'msg'
-- newmsg
-+ msg
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 407, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 350, in _get_module_from_name
+    __import__(name)
+  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\APIRouter\test_api_integration.py", line 3, in <module>
+    from main import app
+ModuleNotFoundError: No module named 'main'
 
 
 ======================================================================
-FAIL: test_get_commit_message (test_commit_message_router.TestCommitMessageRouter.test_get_commit_message)
+ERROR: test_commit_message_router (unittest.loader._FailedTest.test_commit_message_router)
 ----------------------------------------------------------------------
+ImportError: Failed to import test module: test_commit_message_router
 Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_commit_message_router.py", line 53, in test_get_commit_message
-    self.assertEqual(response.json()["message"], "msg")
-AssertionError: 'n' != 'msg'
-- n
-+ msg
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 407, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 350, in _get_module_from_name
+    __import__(name)
+  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\APIRouter\test_commit_message_router.py", line 3, in <module>
+    from router.commit_message_router import router
+ModuleNotFoundError: No module named 'router'
 
 
 ======================================================================
-FAIL: test_summarize_file (test_generate_summary.TestGenerateSummary.test_summarize_file)
+ERROR: test_commits_router (unittest.loader._FailedTest.test_commits_router)
 ----------------------------------------------------------------------
+ImportError: Failed to import test module: test_commits_router
 Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_generate_summary.py", line 56, in test_summarize_file
-    self.assertIn("summary:FILE_PROMPT:a.txt:hello world", summary)
-AssertionError: 'summary:FILE_PROMPT:a.txt:hello world' not found in 'summary:\nYou are an assistant that summarizes source code files.\nPlease provide a concise summary of this file’s purpose, structure, and main logic.\nFocus on what the file does rather than implementation details (No more than 10 words).\n\n\nFile name: a.txt\n\nHere is the file content:\n\nhello world\n\nReturn only the summary (in plain English or Chinese, depending on input language).\n'
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 407, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 350, in _get_module_from_name
+    __import__(name)
+  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\APIRouter\test_commits_router.py", line 3, in <module>
+    from router.commits_router import router
+ModuleNotFoundError: No module named 'router'
+
 
 ======================================================================
-FAIL: test_add_repo (test_repo_router.TestRepoRouter.test_add_repo)
+ERROR: test_insights_router (unittest.loader._FailedTest.test_insights_router)
 ----------------------------------------------------------------------
+ImportError: Failed to import test module: test_insights_router
 Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_repo_router.py", line 38, in test_add_repo
-    self.assertEqual(response.status_code, 200)
-AssertionError: 422 != 200
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 407, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 350, in _get_module_from_name
+    __import__(name)
+  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\APIRouter\test_insights_router.py", line 3, in <module>
+    from router.insights_router import router
+ModuleNotFoundError: No module named 'router'
+
 
 ======================================================================
-FAIL: test_get_summary (test_repository.TestRepository.test_get_summary)
+ERROR: test_repo_router (unittest.loader._FailedTest.test_repo_router)
 ----------------------------------------------------------------------
+ImportError: Failed to import test module: test_repo_router
 Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_repository.py", line 72, in test_get_summary
-    self.assertTrue(nodes)
-AssertionError: [] is not true
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 407, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 350, in _get_module_from_name
+    __import__(name)
+  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\APIRouter\test_repo_router.py", line 3, in <module>
+    from router.repo_router import router
+ModuleNotFoundError: No module named 'router'
+
 
 ======================================================================
-FAIL: test_get_summary_tree (test_repository.TestRepository.test_get_summary_tree)
+ERROR: test_summary_router (unittest.loader._FailedTest.test_summary_router)
 ----------------------------------------------------------------------
+ImportError: Failed to import test module: test_summary_router
 Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_repository.py", line 78, in test_get_summary_tree
-    self.assertTrue(tree)
-AssertionError: None is not true
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 407, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 350, in _get_module_from_name
+    __import__(name)
+  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\APIRouter\test_summary_router.py", line 3, in <module>
+    from router.summary_router import router
+ModuleNotFoundError: No module named 'router'
+
 
 ======================================================================
-FAIL: test_list_commit_groups (test_repository.TestRepository.test_list_commit_groups)
+ERROR: test_user_router (unittest.loader._FailedTest.test_user_router)
 ----------------------------------------------------------------------
+ImportError: Failed to import test module: test_user_router
 Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_repository.py", line 83, in test_list_commit_groups
-    self.assertTrue(groups)
-AssertionError: [] is not true
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 407, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lenovo\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 350, in _get_module_from_name
+    __import__(name)
+  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\APIRouter\test_user_router.py", line 3, in <module>
+    from router.user_router import router
+ModuleNotFoundError: No module named 'router'
 
-======================================================================
-FAIL: test_get_repository (test_repository_manager.TestRepositoryManager.test_get_repository)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_repository_manager.py", line 42, in test_get_repository
-    self.assertIsNotNone(repo)
-AssertionError: unexpectedly None
-
-======================================================================
-FAIL: test_login_logout_me (test_user_router.TestUserRouter.test_login_logout_me)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_user_router.py", line 62, in test_login_logout_me
-    self.assertEqual(response.status_code, 200)
-AssertionError: 401 != 200
-
-======================================================================
-FAIL: test_register (test_user_router.TestUserRouter.test_register)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "D:\Program File\code\SoftWare engineering\csci3100_group_proj_backend\test\test_user_router.py", line 51, in test_register
-    self.assertEqual(response.status_code, 200)
-AssertionError: 400 != 200
 
 ----------------------------------------------------------------------
-Ran 81 tests in 64.436s
+Ran 7 tests in 0.001s
 
-FAILED (failures=12, errors=5)
+FAILED (errors=7)
