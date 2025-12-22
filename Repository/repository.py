@@ -22,6 +22,7 @@ from function.generate_future_suggestion import generate_future_suggestion
 from function.generate_atomic_commits import generate_atomic_commits
 from function.generate_suggested_commit_groups import generate_suggested_commit_groups_agglomerative
 from function.generate_commit_message import generate_commit_message
+from function.generate_commit_labels import generate_labels
 
 ENV = {
     "GIT_AUTHOR_NAME": "LLM Commit Bot",
@@ -33,6 +34,7 @@ ENV = {
 class Repository:
 
     def __init__(self, path="."):
+        print(path)
         self.repo_path = Path(path).resolve()
         try:
             self.repo = Repo(self.repo_path)
@@ -87,6 +89,7 @@ class Repository:
         )
 
     def reset_to_head(self):
+        print(self.repo_path)
         subprocess.run(
             ["git", "reset", "--hard", "HEAD"],
             cwd=self.repo_path,
@@ -114,6 +117,8 @@ class Repository:
         for i, group in enumerate(groups):
             gid = group["id"]
             msg = commit_messages.get(gid, f"Commit group {gid}")
+            if msg is None:
+                continue
 
             files = self.apply_diff_group(group, diffs)
             self.stage_files(files)
@@ -305,3 +310,13 @@ class Repository:
         message = generate_commit_message(llm, diff_dicts)
 
         db.modify_commit_message(group_id, message)
+
+
+    def get_commit_messages_list(self):
+        messages = [c.message.strip() for c in self.repo.iter_commits()]
+        return messages
+    
+    def label_commits(self, llm: LLMBase):
+        messages = self.get_commit_messages_list()
+        result = generate_labels(llm, messages)
+        return result

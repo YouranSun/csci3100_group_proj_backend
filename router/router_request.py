@@ -10,7 +10,7 @@ class RepoRequest(BaseModel):
 #-------------------#
 
 class AddRepoRequest(RepoRequest):
-    name: Optional[str] = None
+    pass
 
 #-----------------#
 # Summary Request #
@@ -67,6 +67,12 @@ class CommitMessageRequest(RepoRequest):
 class EditCommitMessageRequest(RepoRequest):
     group_id: str
     message: str
+
+
+class TagRequest(RepoRequest):
+    pass
+
+
 
 # -----------------------------
 # Request / Response Models

@@ -24,9 +24,11 @@ def register(req: UserRegisterRequest):
 @router.post("/login")
 def login(req: UserLoginRequest, response: Response):
     if not db.verify_user(req.username, req.password):
+        print("fail")
         raise HTTPException(status_code=401, detail="Invalid username or password")
     # 简单 session 实现，存 username
     response.set_cookie(key="user", value=req.username, httponly=True)
+    print("success")
     return {"message": "Login successful", "username": req.username}
 
 

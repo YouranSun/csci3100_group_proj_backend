@@ -2,36 +2,45 @@
 
 ATOMIC_SPLIT_SYSTEM_PROMPT = """\
 You are a senior software engineer skilled in version control and code review.
-Your goal is to split a given large commit into smaller, *atomic commits*.
-Each atomic commit should correspond to a single logical change or feature.
+Your task is to split a large commit into smaller, atomic commits.
+Each atomic commit should represent a single logical change.
 """
 
 def build_atomic_split_prompt(diff_summary: str) -> str:
-    """构造用于建议 commit 拆分点的 prompt"""
+    """构造用于建议 commit 拆分断点（start indices）的 prompt"""
     return f"""
 {ATOMIC_SPLIT_SYSTEM_PROMPT}
 
-Given the following diff summary, please suggest atomic split points.
-Each diff block may contain multiple unrelated code changes.
-You should identify where to split them into smaller commits.
-The division is needed only when there's a clear cut on the implemented function.
+Given the following diff summary, identify atomic split points.
 
-Output JSON format strictly as:
+IMPORTANT:
+- You should return ONLY the START INDICES of each atomic commit.
+- These indices refer to the 'new_lines' array of the file (0-based).
+- The first split index MUST be 0.
+- Indices MUST be strictly increasing.
+- The final commit implicitly ends at the end of 'new_lines'.
+
+These split points will be used as:
+    start = split_points[i]
+    end   = split_points[i + 1]
+
+Only introduce split points when there is a clear logical boundary
+(e.g., different functions, independent features, unrelated refactors).
+
+Output STRICTLY in the following JSON format:
+
 {{
   "splits": [
     {{
       "file": "<filename>",
-      "split_lines": [int, ...]
-    }},
-    ...
+      "split_lines": [0, 12, 27]
+    }}
   ]
 }}
-
-The 'split_lines' indices refer to the 'new_lines' section of each file (0-based).
 
 Here is the diff summary:
 
 {diff_summary}
 
-Return only the JSON result, without any explanations:
+Return ONLY the JSON. Do NOT include explanations or extra text.
 """

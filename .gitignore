@@ -2,3 +2,8 @@ __pycache__
 venv/
 data/
 run.sh
+build/
+dist/
+example.zip
+main.spec
+venv*

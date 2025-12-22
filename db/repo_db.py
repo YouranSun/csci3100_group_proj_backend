@@ -9,13 +9,11 @@ class RepoDB:
         base_dir: 所有 repo 存储的基础目录，默认 ~/data
         """
         project_root = Path(__file__).parent.parent.resolve()
-        # test use
-        if base_dir == ":memory:":
-            self.db_path = ":memory:"
-        else:
-            self.base_dir = Path(base_dir or project_root / "data")
-            self.base_dir.mkdir(parents=True, exist_ok=True)
-            self.db_path = self.base_dir / "repositories.db"
+        self.base_dir = Path(base_dir or project_root / "data")
+        self.base_dir.mkdir(parents=True, exist_ok=True)
+
+        self.db_path = self.base_dir / "repositories.db"
+        print(self.db_path)
         self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
         self._init_tables()
 

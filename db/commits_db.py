@@ -121,7 +121,7 @@ class CommitsDB:
         c = self.conn.cursor()
         c.execute("SELECT value FROM metadata WHERE key=?", (f"commit_message:{group_id}",))
         row = c.fetchone()
-        return row[0]
+        return row[0] if row else None
 
     def modify_commit_message(self, group_id: str, message: str):
         c = self.conn.cursor()
@@ -140,6 +140,7 @@ class CommitsDB:
     # ---------------- diff 操作 ----------------
     def add_atomic_diff(self, diff_id: str, file_path: str, is_new_file: bool, is_deleted_file: bool, old_start: int, new_start: int, old_lines: List[str], new_lines: List[str]):
         c = self.conn.cursor()
+        print(diff_id, file_path, is_new_file, is_deleted_file, old_start, new_start, old_lines, new_lines)
         c.execute(
             "INSERT OR REPLACE INTO atomic_diffs (diff_id, file_path, is_new_file, is_deleted_file, old_start, new_start, old_lines, new_lines) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
             (diff_id, file_path, is_new_file, is_deleted_file, old_start, new_start, json.dumps(old_lines), json.dumps(new_lines))

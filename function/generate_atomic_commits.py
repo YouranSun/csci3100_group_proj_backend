@@ -52,8 +52,8 @@ def apply_split_suggestions(diffs: List[AtomicDiff], split_result: Dict) -> List
         is_deleted_file = d.is_deleted_file
         old_lines = d.hunk.old_lines if d.hunk.old_lines else []
         new_lines = d.hunk.new_lines if d.hunk.new_lines else []
-        old_start = d.hunk.old_start if d.hunk.old_start else []
-        new_start = d.hunk.new_start if d.hunk.new_start else []
+        old_start = d.hunk.old_start if d.hunk.old_start else 0
+        new_start = d.hunk.new_start if d.hunk.new_start else 0
 
         if file_path not in split_map or not split_map[file_path]:
             new_diffs.append(d)
